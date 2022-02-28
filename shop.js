@@ -154,9 +154,9 @@
 //     document.querySelector("#items").innerHTML += kadr;
 //   });
 // });
-let bts = document.querySelectorAll(".add-cart");
 document.querySelector("#number-cart");
-bts.forEach((element) => {
+let buttons = document.querySelectorAll(".add-cart");
+buttons.forEach((element) => {
   element.addEventListener("click", function (event) {
     let quantity = document.querySelector("#number-cart");
     ++quantity.innerText;
@@ -166,28 +166,28 @@ bts.forEach((element) => {
     let titleProduct = product.querySelector(".t-product").innerText;
     let priceProduct = product.querySelector(".p-product").innerText;
 
-    let info = `
+    let text = `
+
             <li class="li">
-              
-              <img src="${imgProduct}">
+              <img src="${imgProduct}" />
               <div class="prperties-cart">
-                  <span class="item-title">${titleProduct} </span>
-                  <span class="item-price">${priceProduct}</span>
-                  <span type="quantity-item">1</span>
+                <span class="item-title">${titleProduct}</span>
+                <span class="item-price">${priceProduct}</span>
+                <span type="quantity-item">1</span>
               </div>
-                <span class="delete-item">x</span>
-              
+              <span class="delete-item">x</span>
             </li>
   
-`;
-        document.querySelector('#items').innerHTML +=info
-        let delets= document.querySelectorAll('.delete-item');
-        delets.forEach(element => {
-          element.addEventListener('click',function (event) {
-            event.target.parentElement.remove()
-          });
-        });
-        });
+  `;
+    
+    document.querySelector('#items').innerHTML += text;
+    let delets= document.querySelectorAll('.delete-item');
+    
+    delets.forEach(element => {
+      element.addEventListener('click',function (event) {
+        event.target.parentElement.remove();
+      });
+    });
 
   });
-
+});
