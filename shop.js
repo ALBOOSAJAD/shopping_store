@@ -154,37 +154,41 @@
 //     document.querySelector("#items").innerHTML += kadr;
 //   });
 // });
+let quality = document.querySelector("#number-cart");
+let buttons = document.querySelectorAll(".add-cart");
+buttons.forEach((element) => {
+  element.addEventListener("click", function (event) {
+    ++quality.innerText;
 
-let quantity= document.querySelector('#number-cart');
-let bottoms= document.querySelectorAll('.add-cart');
-bottoms.forEach(element => {
-  element.addEventListener('click',function (event) {
-    ++quantity.innerText;
-    let product= event.target.parentElement; 
+    let product = event.target.parentElement;
+    let idProduct = product.id;
 
-    let imgPro= product.querySelector('img').src;
-    let titlePro= product.querySelector('.t-product').innerText;
-    let pricePro= product.querySelector('.p-product').innerText;
-
-    let text= `
-        <li class="li">
-          <img src="${imgPro}" />
+    let cart = document.getElementById(`item${idProduct}`);
+    if (!cart) {
+      let imagProduct = product.querySelector("img").src;
+      let titleProduct = product.querySelector(".t-product").innerText;
+      let priceProduct = product.querySelector(".p-product").innerText;
+      let text = `
+        <li id="item${idProduct}">
+           <img src="${imagProduct}" />
           <div class="prperties-cart">
-            <span class="item-title"> ${titlePro}</span>
-            <span class="item-price">${pricePro}</span>
-            <span type="quantity-item">1</span>
+            <span class="item-title">${titleProduct}</span>
+            <span class="item-price">${priceProduct}</span>
+            <span class="quantity-item">1</span>
           </div>
-          <span class="delete-item">x</span>
+            <span class="delete-item">x</span>
         </li>
-    
-    `
-    document.querySelector('#items').innerHTML += text;
-    let delets= document.querySelectorAll('.delete-item');
-    delets.forEach(element => {
-      element.addEventListener('click',function (event) {
-        event.target.parentElement.remove()
-      })
-    });
+    `;
+      document.querySelector("#items").innerHTML += text;
+    } else {
+      ++cart.querySelector(".quantity-item").innerText;
+    }
 
+    let delet = document.querySelectorAll(".delete-item");
+    delet.forEach((element) => {
+      element.addEventListener("click", function (event) {
+        event.target.parentElement.remove();
+      });
+    });
   });
-}); 
+});
