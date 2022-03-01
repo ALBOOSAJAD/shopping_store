@@ -73,14 +73,19 @@ body{
 }
 .products{
     display: flex;
-    margin: 30px;
     padding: 10px;
 }
 .item-product{
-    margin: 30px;
+    margin: 10px;
+}
+.item-product img{
+    width: 193px;
+    height: 216px;
+    box-shadow: 0 0 8px 0px #625f5f;
+    border-radius: 5px;
 }
 .tilte-frame{
-    padding: 50px;
+    padding: 20px;
     position: relative;
 }
 #cart{
@@ -116,6 +121,9 @@ body{
     border-radius: 5px;
   
 }
+.frame-section{
+    padding: 20px;
+}
 .item-price{
 margin: 15px;
 }
@@ -140,7 +148,7 @@ margin: 15px;
 .image{
     width: 22px;
     height: 31px;
-    
+
 }
 .prperties-product{
     padding: 10px;
@@ -160,4 +168,13 @@ margin: 15px;
     justify-content: center;
     align-items: center;
     font-size: 11pt;
+}
+.text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20pt;
+    width: 73%;
+    font-family: cursive;
+    color: cadetblue;
 }
