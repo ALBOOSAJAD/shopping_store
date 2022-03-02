@@ -192,3 +192,42 @@ buttons.forEach((element) => {
     });
   });
 });
+
+let item = document.querySelector("#number-cart");
+let bottums = document.querySelectorAll(".add-cart");
+bottums.forEach((element) => {
+  element.addEventListener("click", function (event) {
+    ++item.innerText;
+
+    let product = event.target.parentElement;
+    let idProduct = product.id;
+    
+    let cart = document.getElementById(`item${idProduct}`);
+    if (!cart) {
+      let imgProduct = product.querySelector("img").src;
+      let titleProduct = product.querySelector(".t-product").innerText;
+      let priceProduct = product.querySelector(".p-product").innerText;
+      let text = `
+      <li id="item${idProduct}">
+        <img src="${imgProduct}" />
+        <div class="prperties-cart">
+          <span class="item-title">${titleProduct} </span>
+          <span class="item-price">${priceProduct}</span>
+          <span type="quantity-item">1</span>
+        </div>
+        <span class="delete-item">x</span>
+      </li>
+`;
+      document.querySelector("#items").innerHTML += text;
+    } else {
+      ++cart.querySelector('.quantity-item').innerText;
+    }
+
+    let delets = document.querySelectorAll(".delete-item");
+    delets.forEach((element) => {
+      element.addEventListener("click", function (event) {
+        event.target.parentElement.remove();
+      });
+    });
+  });
+});
