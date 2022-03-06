@@ -97,6 +97,9 @@ body{
     margin-top: 9px;
 
 }
+#cart:hover #cart-list{
+    display: block;
+}
 .bi{
     font-size: larger;
 }
@@ -108,7 +111,7 @@ body{
     font-size: large;
 }
 
-#items{
+#cart-list{
     width: 280px;
     background-color: beige;
     left: 33px;
@@ -119,6 +122,7 @@ body{
     font-size: x-small;
     padding: 10px;
     border-radius: 5px;
+    display: none;
   
 }
 .frame-section{
@@ -177,4 +181,14 @@ margin: 15px;
     width: 73%;
     font-family: cursive;
     color: cadetblue;
+}
+#empty-cart{
+    position: absolute;
+    z-index: 100;
+    top: 33%;
+    left: 10%;
+    font-size: 9pt;
+    font-family: system-ui;
+    color: blueviolet;
+    display: none;
 }
