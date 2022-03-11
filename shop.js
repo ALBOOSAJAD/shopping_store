@@ -120,46 +120,6 @@
 // // };
 // ////////////////////////////////
 
-
-// let quality = document.querySelector("#number-cart");
-// let buttons = document.querySelectorAll(".add-cart");
-// buttons.forEach((element) => {
-//   element.addEventListener("click", function (event) {
-//     ++quality.innerText;
-
-//     let product = event.target.parentElement;
-//     let idProduct = product.id;
-
-//     let cart = document.getElementById(`item${idProduct}`);
-//     if (!cart) {
-//       let imagProduct = product.querySelector("img").src;
-//       let titleProduct = product.querySelector(".t-product").innerText;
-//       let priceProduct = product.querySelector(".p-product").innerText;
-//       let text = `
-//         <li id="item${idProduct}">
-//            <img src="${imagProduct}" />
-//           <div class="prperties-cart">
-//             <span class="item-title">${titleProduct}</span>
-//             <span class="item-price">${priceProduct}</span>
-//             <span class="quantity-item">1</span>
-//           </div>
-//             <span class="delete-item">x</span>
-//         </li>
-//     `;
-//       document.querySelector("#items").innerHTML += text;
-//     } else {
-//       ++cart.querySelector(".quantity-item").innerText;
-//     }
-
-//     let delet = document.querySelectorAll(".delete-item");
-//     delet.forEach((element) => {
-//       element.addEventListener("click", function (event) {
-//         event.target.parentElement.remove();
-//       });
-//     });
-//   });
-// });
-
 // let item = document.querySelector("#number-cart");
 // let bottums = document.querySelectorAll(".add-cart");
 // bottums.forEach((element) => {
@@ -168,7 +128,7 @@
 
 //     let product = event.target.parentElement;
 //     let idProduct = product.id;
-    
+
 //     let cart = document.getElementById(`item${idProduct}`);
 //     if (!cart) {
 //       let imgProduct = product.querySelector("img").src;
@@ -195,13 +155,7 @@
 //       element.addEventListener("click", function (event) {
 //       let quantitiyItem= event.target.parentElement.querySelector('.quantity-item').innerText;
 //       let quality = document.querySelector("#number-cart");
-//       quantitySpan.innerText = quantitySpan.innerText - quantitiyItem;
-      
-        
-
-
-
-
+//       quantity.innerText = quantity.innerText - quantitiyItem;
 
 //         event.target.parentElement.remove();
 //       });
@@ -216,56 +170,91 @@
 //  if (shi == number) {
 //    console.log(shi);
 //  }
-// }; 
-  
-let bottums= document.querySelectorAll('.add-cart');
-let numberCart= document.querySelector('#number-cart');
-bottums.forEach(element => {
-  element.addEventListener('click',function (event) {
+// };
+
+let bottums = document.querySelectorAll(".add-cart");
+let numberCart = document.querySelector("#number-cart");
+bottums.forEach((element) => {
+  element.addEventListener("click", function (event) {
     ++numberCart.innerText;
 
-    let product= event.target.parentElement;
-    let idProduct= product.id;
-    
-    let cart= document.getElementById(`item${idProduct}`);
+    let product = event.target.parentElement;
+    let idProduct = product.id;
+    let cart = document.getElementById(`item${idProduct}`);
+
     if (!cart) {
-      let imgProduct= product.querySelector('img').src;
-    let titleProduct= product.querySelector('.t-product').innerText;
-    let priceProduct= product.querySelector('.p-product').innerText;
+      let imgP = product.querySelector("img").src;
+      let tiltlP = product.querySelector(".t-product").innerText;
+      let priceP = product.querySelector(".p-product").innerText;
+      let text = `
 
-    let text= `
+      <li id="item${idProduct}">
+        <img src="${imgP}" />
+        <div class="prperties-cart">
+          <span class="item-title">${tiltlP}</span>
+          <span class="item-price">${priceP}</span>
+          <span class="quantity-item">1</span>
+        </div>
+        <span class="delete-item">x</span>
+      </li>
+`;
+      document.querySelector("#cart-list").innerHTML += text;
 
-          <li id="item${idProduct}">
-            <img src="${imgProduct}" />
-            <div class="prperties-cart">
-              <span class="item-title">${titleProduct}</span>
-              <span class="item-price">${priceProduct}</span>
-              <span class="quantity-item">1</span>
-            </div>
-            <span class="delete-item">x</span>
-          </li>
-    `
-    document.querySelector('#items').innerHTML += text;
-    }else {
-      ++cart.querySelector('.quantity-item').innerText;
+      let delets = document.querySelectorAll(".delete-item");
+      delets.forEach((element) => {
+        element.addEventListener("click", function (event) {
+          let quantityItem =
+            event.target.parentElement.querySelector(
+              ".quantity-item"
+            ).innerText;
+          let numberCart = document.querySelector("#number-cart");
+          numberCart.innerText = numberCart.innerText - quantityItem;
+          event.target.parentElement.remove();
+        });
+      });
+    } else {
+      ++cart.querySelector(".quantity-item").innerText;
     }
-
-    let delets= document.querySelectorAll('.delete-item');
-    let emptyCart= document.querySelector('#empty-cart');
-    
-    delets.forEach(element => {
-      element.addEventListener('click',function (event) {
-        let quantityItem= event.target.parentElement.querySelector('.quantity-item').innerText;
-        numberCart.innerText =  numberCart.innerText - quantityItem;
-
-        if (numberCart == 0) {
-          emptyCart.style.display= 'block'
-        };
-
-        event.target.parentElement.remove()
-      })
-    });
-    
-     
   });
 });
+
+// fetch('https://fakestoreapi.com/products/1')
+// .then(function (res) {
+//   return res.json()
+// }).then(function (data) {
+//   console.log(data);
+// }).catch(function () {
+
+// })
+
+
+fetch("https://fakestoreapi.com/products/1")
+  .then(function (res) {
+    return res.json();
+  })
+  .then(function (data) {
+    setproducts(data)
+  })
+  .catch(function (error) {
+    console.error();
+  });
+
+
+function setproducts(products) {
+  products.forEach(element => {
+    let newItem = `
+            <div id='${element.Id}'>
+              <img
+                src="${element.Image}"
+                   alt=""
+                  />
+                  <div class="prperties-product">
+                    <div class="t-product">${element.Title}</div>
+                    <div class="p-product">${element.Price}</div>
+                  </div>
+              <button class="add-cart">اضافه کردن به سبد خرید</button>
+            </div>
+  `
+  document.querySelector('.products').innerHTML += newItem;
+  });
+}
