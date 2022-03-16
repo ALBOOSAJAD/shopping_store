@@ -171,52 +171,56 @@
 //    console.log(shi);
 //  }
 // };
+//////////////////////////////////////
 
-let bottums = document.querySelectorAll(".add-cart");
-let numberCart = document.querySelector("#number-cart");
-bottums.forEach((element) => {
-  element.addEventListener("click", function (event) {
-    ++numberCart.innerText;
 
-    let product = event.target.parentElement;
-    let idProduct = product.id;
-    let cart = document.getElementById(`item${idProduct}`);
+// let bottums = document.querySelectorAll(".add-cart");
+// let numberCart = document.querySelector("#number-cart");
+// bottums.forEach((element) => {
+//   element.addEventListener("click", function (event) {
+//     ++numberCart.innerText;
 
-    if (!cart) {
-      let imgP = product.querySelector("img").src;
-      let tiltlP = product.querySelector(".t-product").innerText;
-      let priceP = product.querySelector(".p-product").innerText;
-      let text = `
+//     let product = event.target.parentElement;
+//     let idProduct = product.id;
+//     let cart = document.getElementById(`item${idProduct}`);
 
-      <li id="item${idProduct}">
-        <img src="${imgP}" />
-        <div class="prperties-cart">
-          <span class="item-title">${tiltlP}</span>
-          <span class="item-price">${priceP}</span>
-          <span class="quantity-item">1</span>
-        </div>
-        <span class="delete-item">x</span>
-      </li>
-`;
-      document.querySelector("#cart-list").innerHTML += text;
+//     if (!cart) {
+//       let imgP = product.querySelector("img").src;
+//       let tiltlP = product.querySelector(".t-product").innerText;
+//       let priceP = product.querySelector(".p-product").innerText;
+//       let text = `
 
-      let delets = document.querySelectorAll(".delete-item");
-      delets.forEach((element) => {
-        element.addEventListener("click", function (event) {
-          let quantityItem =
-            event.target.parentElement.querySelector(
-              ".quantity-item"
-            ).innerText;
-          let numberCart = document.querySelector("#number-cart");
-          numberCart.innerText = numberCart.innerText - quantityItem;
-          event.target.parentElement.remove();
-        });
-      });
-    } else {
-      ++cart.querySelector(".quantity-item").innerText;
-    }
-  });
-});
+//       <li id="item${idProduct}">
+//         <img src="${imgP}" />
+//         <div class="prperties-cart">
+//           <span class="item-title">${tiltlP}</span>
+//           <span class="item-price">${priceP}</span>
+//           <span class="quantity-item">1</span>
+//         </div>
+//         <span class="delete-item">x</span>
+//       </li>
+// `;
+//       document.querySelector("#cart-list").innerHTML += text;
+
+//       let delets = document.querySelectorAll(".delete-item");
+//       delets.forEach((element) => {
+//         element.addEventListener("click", function (event) {
+//           let quantityItem =
+//             event.target.parentElement.querySelector(
+//               ".quantity-item"
+//             ).innerText;
+//           let numberCart = document.querySelector("#number-cart");
+//           numberCart.innerText = numberCart.innerText - quantityItem;
+//           event.target.parentElement.remove();
+//         });
+//       });
+//     } else {
+//       ++cart.querySelector(".quantity-item").innerText;
+//     }
+//   });
+// });
+////////////////////////////////////////////////////////
+
 
 // fetch('https://fakestoreapi.com/products/1')
 // .then(function (res) {
@@ -228,33 +232,76 @@ bottums.forEach((element) => {
 // })
 
 
-fetch("https://fakestoreapi.com/products/1")
-  .then(function (res) {
-    return res.json();
-  })
-  .then(function (data) {
-    setproducts(data)
-  })
-  .catch(function (error) {
-    console.error();
-  });
+// fetch("https://fakestoreapi.com/products/1")
+//   .then(function (res) {
+//     return res.json();
+//   })
+//   .then(function (data) {
+//     setproducts(data)
+//   })
+//   .catch(function (error) {
+//     console.error();
+//   });
 
 
-function setproducts(products) {
-  products.forEach(element => {
-    let newItem = `
-            <div id='${element.Id}'>
-              <img
-                src="${element.Image}"
-                   alt=""
-                  />
-                  <div class="prperties-product">
-                    <div class="t-product">${element.Title}</div>
-                    <div class="p-product">${element.Price}</div>
-                  </div>
-              <button class="add-cart">اضافه کردن به سبد خرید</button>
-            </div>
-  `
-  document.querySelector('.products').innerHTML += newItem;
-  });
-}
+// function setproducts(products) {
+//   products.forEach(element => {
+//     let newItem = `
+//             <div id='${element.Id}'>
+//               <img
+//                 src="${element.Image}"
+//                    alt=""
+//                   />
+//                   <div class="prperties-product">
+//                     <div class="t-product">${element.Title}</div>
+//                     <div class="p-product">${element.Price}</div>
+//                   </div>
+//               <button class="add-cart">اضافه کردن به سبد خرید</button>
+//             </div>
+//   `
+//   document.querySelector('.products').innerHTML += newItem;
+//   });
+// }
+
+// fetch('https://fakestoreapi.com/products/1')
+// .then(function (res) {
+//   return res.json();
+// })
+// .then(function (data) {
+//   setproduct= data
+// })
+// .catch(function (error) {
+//   console.log(error);
+// })
+
+// function setProduct(products) {
+//   products.forEach(element => {
+//     let newItem=
+//     `
+//             <div  id="${element.id}">
+//                   <img
+//                     src="${element.image}"
+//                     alt=""
+//                   />
+//                   <div class="prperties-product">
+//                     <div class="t-product">${element.tilte}</div>
+//                     <div class="p-product">${element.price}</div>
+//                   </div>
+//                   <button class="add-cart">اضافه کردن به سبد خرید</button>
+//               </div>
+//     `
+//     document.querySelector('.products').innerHTML += newItem;
+//   });
+// }
+
+///////////////////////////////////////////////////
+
+let items= ['sajad', 'reza', 'ali'];
+let personality= {name: 'sajad', lastName: 'mohami', age:44 }
+
+let change= JSON.stringify(personality)
+ localStorage.setItem('personality',JSON.stringify(personality))
+localStorage.setItem('items',JSON.stringify(items))
+
+let name= JSON.parse(change)
+console.log(name);
