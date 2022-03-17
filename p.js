@@ -6,7 +6,7 @@ document.getElementById('btn').addEventListener('click',function () {
    const div= document.querySelector('#div').value;
    
    fetch('sdscdsdfdfgdfg',{
-       method:'post';
+       method:'post',
        body: JSON.stringify({
 
        })
