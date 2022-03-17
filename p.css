@@ -1,0 +1,28 @@
+body{
+    margin: 3%;
+    padding: 3%;
+}
+.all{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+label{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+h1{
+    text-align: center;
+    padding: 50px;
+}
+input{
+    width: 300px;
+    height: 30px;
+    margin-bottom: 20px;
+}
+.btn{
+width: 100px;
+height: 30px;
+}
